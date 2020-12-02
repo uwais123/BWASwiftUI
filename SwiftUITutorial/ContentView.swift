@@ -8,83 +8,30 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            Form {
-                // Section Profile
-                Section() {
-                   NavigationLink(destination: About()){
-                    HStack {
-                        Image("profile")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                        
-                        // Nama & Status
-                        VStack(alignment: .leading) {
-                            Text("Uwais").font(.headline)
-                            Text("Mobile Developer").font(.caption)
-                        }
+        ZStack{
+            TabView{
+                Home()
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("Beranda")
                     }
-                    .padding(.top, 10)
-                    .padding(.bottom, 10)
-                    
-                   }
-                }
+                TabOne()
+                    .tabItem {
+                        Image(systemName: "paperplane.fill")
+                        Text("Explorasi")
+                    }
+                TabTwo()
+                    .tabItem {
+                        Image(systemName: "tray.fill")
+                        Text("Subcription")
+                    }
                 
-                // section pengaturan umum
-                Section(header: Text("Pengaturan Umum").textCase(.none)) {
-                    NavigationLink(destination: Pesan()){
-                        HStack(spacing: 20) {
-                            Image(systemName: "star.fill")
-                                .frame(width: 35, height: 35)
-                                .background(Color.orange)
-                                .cornerRadius(10)
-                                .foregroundColor(.white)
-                        
-                            Text("Pesan Berbintang")
-                        }
+                TabTwo()
+                    .tabItem {
+                        Image(systemName: "envelope.fill")
+                        Text("Kotak Masuk")
                     }
-                    
-                    NavigationLink(destination: About()) {
-                        HStack(spacing: 20) {
-                            Image(systemName: "tv")
-                                .frame(width: 35, height: 35)
-                                .background(Color.green)
-                                .cornerRadius(10)
-                                .foregroundColor(.white)
-                            
-                            Text("Whatsapp Web/Dekstop")
-                        }
-                    }
-                }
-                
-                // section pengaturan akun
-                Section(header:
-                        Text("Pengaturan Akun").textCase(.none)){
-                    NavigationLink(destination: About()) {
-                        HStack(spacing: 20) {
-                            Image(systemName: "person")
-                                .frame(width: 35, height: 35)
-                                .background(Color.blue)
-                                .cornerRadius(10)
-                                .foregroundColor(.white)
-                            
-                            Text("Akun")
-                        }
-                    }
-                    NavigationLink(destination: About()) {
-                        HStack(spacing: 20) {
-                            Image(systemName: "phone.circle")
-                                .frame(width: 35, height: 35)
-                                .background(Color.green)
-                                .cornerRadius(10)
-                                .foregroundColor(.white)
-                            
-                            Text("Chat")
-                        }
-                    }
-                }
-            }.navigationTitle("Settings")
+            }.accentColor(.red)
         }
     }
 }
@@ -95,14 +42,178 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct About: View {
+struct Home: View {
     var body: some View {
-        Text("Halaman About")
+        NavigationView {
+            Content()
+                
+                .navigationBarItems(
+                    leading:
+                        HStack {
+                            Button(action: {print("Hello")}) {
+                                Image("youtube")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .frame(width:90, height:50)
+                            }
+                            
+                        },
+                    trailing:
+                        HStack {
+                            Button(action: {print("btn")}) {
+                                Image(systemName: "tray.full")
+                                    .foregroundColor(Color.secondary)
+                            }
+                            
+                            Button(action: {print("btn")}) {
+                                Image(systemName: "video.fill")
+                                    .foregroundColor(Color.secondary)
+                            }
+                            
+                            Button(action: {print("btn")}) {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(Color.secondary)
+                            }
+                            
+                            Button(action: {print("btn")}) {
+                                Image("profile")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .clipShape(Circle())
+                            }
+                        }
+                ).navigationBarTitle("", displayMode: .inline)
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
-struct Pesan: View {
+struct TabOne: View {
     var body: some View {
-        Text("Pesan Berbintang")
+        Text("TabOne")
+    }
+}
+
+struct TabTwo: View {
+    var body: some View {
+        Text("TabTwo")
+    }
+}
+
+struct Content: View {
+    var body: some View {
+        List {
+            
+            // konten 1
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                    Image("thumbnail")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                    
+                    Text("10.00")
+                        .padding(.all, 5)
+                        .foregroundColor(Color.white)
+                        .font(.caption)
+                        .background(Color.black)
+                        .cornerRadius(5)
+                        .padding(.trailing, 5)
+                        .padding(.bottom, 5)
+                }
+                
+                HStack(spacing: 20) {
+                    Image("profile")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                    
+                    VStack(alignment: .leading) {
+                        Text("Make Thumbnail that rank")
+                            .bold()
+                            .font(.headline)
+                        HStack {
+                            Text("let's make interactive thumbnail - 300x ditonton - 9 jam yang lalu").font(.caption)
+                        }
+                    }
+                    Spacer()
+                    Image(systemName: "list.bullet")
+                }
+                
+            }
+            
+            // konten 2
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                    Image("thumbnail2")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                    
+                    Text("10.00")
+                        .padding(.all, 5)
+                        .foregroundColor(Color.white)
+                        .font(.caption)
+                        .background(Color.black)
+                        .cornerRadius(5)
+                        .padding(.trailing, 5)
+                        .padding(.bottom, 5)
+                }
+                
+                HStack(spacing: 20) {
+                    Image("profile")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                    
+                    VStack(alignment: .leading) {
+                        Text("SwiftUI Tutorial #1")
+                            .bold()
+                            .font(.headline)
+                        HStack {
+                            Text("let's make interactive thumbnail - 300x ditonton - 9 jam yang lalu").font(.caption)
+                        }
+                    }
+                    Spacer()
+                    Image(systemName: "list.bullet")
+                }
+                
+            }
+            
+            // konten 3
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                    Image("thumbnail3")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                    
+                    Text("10.00")
+                        .padding(.all, 5)
+                        .foregroundColor(Color.white)
+                        .font(.caption)
+                        .background(Color.black)
+                        .cornerRadius(5)
+                        .padding(.trailing, 5)
+                        .padding(.bottom, 5)
+                }
+                
+                HStack(spacing: 20) {
+                    Image("profile")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                    
+                    VStack(alignment: .leading) {
+                        Text("SwiftUI Tutorial #2")
+                            .bold()
+                            .font(.headline)
+                        HStack {
+                            Text("let's make interactive thumbnail - 300x ditonton - 9 jam yang lalu").font(.caption)
+                        }
+                    }
+                    Spacer()
+                    Image(systemName: "list.bullet")
+                }
+                
+            }
+        }
     }
 }
