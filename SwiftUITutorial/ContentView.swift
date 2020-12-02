@@ -103,117 +103,59 @@ struct TabTwo: View {
 struct Content: View {
     var body: some View {
         List {
+            Cell(image: "thumbnail", profile: "profile", judul: "SwiftUI", deskripsi: "Belajar membuat aplikasi IOS - 500x Ditonton - 9 jam yang lalu", durasi: "10:00")
             
-            // konten 1
-            VStack {
-                ZStack(alignment: .bottomTrailing) {
-                    Image("thumbnail")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                    
-                    Text("10.00")
-                        .padding(.all, 5)
-                        .foregroundColor(Color.white)
-                        .font(.caption)
-                        .background(Color.black)
-                        .cornerRadius(5)
-                        .padding(.trailing, 5)
-                        .padding(.bottom, 5)
-                }
+            Cell(image: "thumbnail2", profile: "profile", judul: "SwiftUI", deskripsi: "Belajar membuat aplikasi IOS - 500x Ditonton - 9 jam yang lalu", durasi: "10:00")
+            
+            Cell(image: "thumbnail3", profile: "profile", judul: "SwiftUI", deskripsi: "Belajar membuat aplikasi IOS - 500x Ditonton - 9 jam yang lalu", durasi: "10:00")
+        }
+    }
+}
+
+struct Cell: View {
+    
+    var image: String
+    var profile: String
+    var judul: String
+    var deskripsi: String
+    var durasi: String
+    
+    var body: some View {
+        // konten 3
+        VStack {
+            ZStack(alignment: .bottomTrailing) {
+                Image(image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
                 
-                HStack(spacing: 20) {
-                    Image("profile")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .clipShape(Circle())
-                    
-                    VStack(alignment: .leading) {
-                        Text("Make Thumbnail that rank")
-                            .bold()
-                            .font(.headline)
-                        HStack {
-                            Text("let's make interactive thumbnail - 300x ditonton - 9 jam yang lalu").font(.caption)
-                        }
-                    }
-                    Spacer()
-                    Image(systemName: "list.bullet")
-                }
-                
+                Text(durasi)
+                    .padding(.all, 5)
+                    .foregroundColor(Color.white)
+                    .font(.caption)
+                    .background(Color.black)
+                    .cornerRadius(5)
+                    .padding(.trailing, 5)
+                    .padding(.bottom, 5)
             }
             
-            // konten 2
-            VStack {
-                ZStack(alignment: .bottomTrailing) {
-                    Image("thumbnail2")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                    
-                    Text("10.00")
-                        .padding(.all, 5)
-                        .foregroundColor(Color.white)
-                        .font(.caption)
-                        .background(Color.black)
-                        .cornerRadius(5)
-                        .padding(.trailing, 5)
-                        .padding(.bottom, 5)
-                }
+            HStack(spacing: 20) {
+                Image(profile)
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .clipShape(Circle())
                 
-                HStack(spacing: 20) {
-                    Image("profile")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .clipShape(Circle())
-                    
-                    VStack(alignment: .leading) {
-                        Text("SwiftUI Tutorial #1")
-                            .bold()
-                            .font(.headline)
-                        HStack {
-                            Text("let's make interactive thumbnail - 300x ditonton - 9 jam yang lalu").font(.caption)
-                        }
+                VStack(alignment: .leading) {
+                    Text(judul)
+                        .bold()
+                        .font(.headline)
+                    HStack {
+                        Text(deskripsi).font(.caption)
                     }
-                    Spacer()
-                    Image(systemName: "list.bullet")
                 }
-                
+                Spacer()
+                Image(systemName: "list.bullet")
             }
             
-            // konten 3
-            VStack {
-                ZStack(alignment: .bottomTrailing) {
-                    Image("thumbnail3")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                    
-                    Text("10.00")
-                        .padding(.all, 5)
-                        .foregroundColor(Color.white)
-                        .font(.caption)
-                        .background(Color.black)
-                        .cornerRadius(5)
-                        .padding(.trailing, 5)
-                        .padding(.bottom, 5)
-                }
-                
-                HStack(spacing: 20) {
-                    Image("profile")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .clipShape(Circle())
-                    
-                    VStack(alignment: .leading) {
-                        Text("SwiftUI Tutorial #2")
-                            .bold()
-                            .font(.headline)
-                        HStack {
-                            Text("let's make interactive thumbnail - 300x ditonton - 9 jam yang lalu").font(.caption)
-                        }
-                    }
-                    Spacer()
-                    Image(systemName: "list.bullet")
-                }
-                
-            }
         }
     }
 }
